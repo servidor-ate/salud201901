@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/backendlayout}">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Show Recipe</title>
+
+    </head>
+    <body>
+        <div class="container" layout:fragment="custom-content" style="padding-top: 60px;">    
+            <h1 th:text="${title}"></h1>
+            <h1 th:text="${showRoute}">></h1>
+            <div class="form-group">
+                <label>User Name:</label>
+                <label th:text="${user.userName}"></label>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <label th:text="${user.email}"></label>
+            </div>
+            <a th:href="@{${indexRoute}}" class="btn btn-default">Back to Index</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/backendlayout}">
+    <head>
+
+        <meta charset="UTF-8"/>
+        <title>AddEdit Users</title>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity ="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+              th:href ="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+        <script src ="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+        <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity ="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin ="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <div class="container" layout:fragment="custom-content" style="padding-top: 60px;">   
+            <h1 th:text="${title}"></h1>    
+            <form  th:action="@{/user}" th:object="${userForm}" method="post">
+                <input type="hidden" th:field="*{userId}"/>
+                <div class="form-group">
+                    <label th:text="#{user.userName}">>User Name</label>
+                    <input type="text"  th:field="*{userName}" class="form-control" />
+                    <span class="help-block" th:if="${#fields.hasErrors('userName')}">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('userName')}" th:text="${err}" class="error"/>
+                        </ul>   
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" th:field="*{email}" class="form-control" />
+                    <span class="help-block" th:if="${#fields.hasErrors('email')}">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('email')}" th:text="${err}"  class="error"/>
+                        </ul>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default"/> <a class="btn btn-default" th:href="@{${indexRoute}}">Cancel</a>
+                </div>
+
+            </form>
+        </div>    
+    </body>
+</html>

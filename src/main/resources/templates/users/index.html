@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/backendlayout}">
+    <body>    
+        <div class="container" layout:fragment="custom-content" style="padding-top: 60px;">
+            <h1 th:text="#{user.indexTitle}"></h1>
+            <a class="btn btn-default" th:href="@{${newRoute}}">New</a>
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.userId}"></td>
+                    <td th:text="${user.userName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td></td>
+                    <td> <a class="btn btn-default" th:href="@{${showRoute}+${user.userId}}">Show</a></td>
+                    <td> <a class="btn btn-default" th:href="@{${editRoute}+${user.userId}}">Edit</a></td>
+                    <td> 
+                        <form  th:action="@{${deleteRoute}+${user.userId}}" th:method="delete">
+                            <input type="submit" value="Delete"  class="btn btn-default"/> 
+                        </form>
+                    </td> 
+                </tr>
+            </table>
+        </div>    
+    </body>
+</html>

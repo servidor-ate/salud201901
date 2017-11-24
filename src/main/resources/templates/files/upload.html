@@ -1,0 +1,14 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/backendlayout}">
+
+<body>
+<div class="container" layout:fragment="custom-content" style="padding-top: 60px;">    
+<h1>Spring MVC file upload example</h1>
+
+<form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="file" /><br/>
+    <input type="submit" value="Submit" />
+</form>
+</div>
+</body>
+</html>
